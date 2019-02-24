@@ -1,0 +1,111 @@
+package com.sheffmachine.domain;
+
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Objects;
+
+/**
+ * A Task.
+ */
+@Document(collection = "task")
+public class Task implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    private String id;
+
+    @Field("name")
+    private String name;
+
+    @Field("due_date")
+    private LocalDate dueDate;
+
+    @Field("complete")
+    private Boolean complete;
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Task name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public Task dueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+        return this;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public Boolean isComplete() {
+        return complete;
+    }
+
+    public Task complete(Boolean complete) {
+        this.complete = complete;
+        return this;
+    }
+
+    public void setComplete(Boolean complete) {
+        this.complete = complete;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Task task = (Task) o;
+        if (task.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), task.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+            "id=" + getId() +
+            ", name='" + getName() + "'" +
+            ", dueDate='" + getDueDate() + "'" +
+            ", complete='" + isComplete() + "'" +
+            "}";
+    }
+}
